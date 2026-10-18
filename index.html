@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Order delicious food online with Foodie.">
+    <title>Foodie - Online Food Delivery</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- JavaScript File -->
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <nav class="navbar container" aria-label="Main navigation">
+
+            <a class="brand" href="#">
+                <span class="brand-mark">f</span>
+                foodie<span class="brand-dot">.</span>
+            </a>
+
+            <div class="delivery-location">
+                <span class="location-icon">⌖</span>
+                <span>
+                    <small>Deliver to</small>
+                    <strong>Mangaluru, India</strong>
+                </span>
+                <span class="chevron">⌄</span>
+            </div>
+
+            <div class="nav-actions">
+                <a class="nav-link" href="#menu">Explore menu</a>
+
+                <button class="cart-button" id="cart-toggle"
+                    aria-label="Open shopping cart">
+                    🛒 <span>Cart</span>
+                    <b id="cart-count">0</b>
+                </button>
+            </div>
+
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero container">
+
+            <div class="hero-copy">
+                <p class="eyebrow">
+                    <span>✦</span> GOOD FOOD, GOOD MOOD
+                </p>
+
+                <h1>
+                    Your next meal,<br>
+                    <span>made delicious.</span>
+                </h1>
+
+                <p class="hero-description">
+                    From local favorites to feel-good comfort food,
+                    find something delicious for every craving.
+                </p>
+
+                <a class="primary-button hero-cta" href="#menu">
+                    Order your food <span>→</span>
+                </a>
+
+                <div class="hero-trust">
+                    <span class="trust-avatars">👨🏽‍🍳 👩🏻‍🍳 🧑🏾‍🍳</span>
+                    <span>
+                        <strong>Freshly prepared</strong>
+                        <small>Made with care, every time</small>
+                    </span>
+                </div>
+            </div>
+
+            <div class="hero-art" aria-label="Delicious burger">
+                <div class="hero-circle"></div>
+                <div class="hero-food">🍔</div>
+
+                <div class="floating-note note-top">
+                    <span>⭐</span>
+                    <span>
+                        <strong>4.9/5 rating</strong>
+                        <small>Loved by foodies</small>
+                    </span>
+                </div>
+
+                <div class="floating-note note-bottom">
+                    <span class="delivery-emoji">🛵</span>
+                    <span>
+                        <strong>Fast delivery</strong>
+                        <small>Right to your door</small>
+                    </span>
+                </div>
+
+                <span class="spark spark-one">✦</span>
+                <span class="spark spark-two">✳</span>
+            </div>
+
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits container"
+            aria-label="Our benefits">
+
+            <div class="benefit">
+                <span class="benefit-icon">🥬</span>
+                <span>
+                    <strong>Fresh ingredients</strong>
+                    <small>Quality in every bite</small>
+                </span>
+            </div>
+
+            <div class="benefit">
+                <span class="benefit-icon">⚡</span>
+                <span>
+                    <strong>Quick delivery</strong>
+                    <small>Food at your doorstep</small>
+                </span>
+            </div>
+
+            <div class="benefit">
+                <span class="benefit-icon">💛</span>
+                <span>
+                    <strong>Made with love</strong>
+                    <small>Good food, happy you</small>
+                </span>
+            </div>
+
+        </section>
+
+        <!-- Food Menu Section -->
+        <section class="menu-section container" id="menu">
+
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">FIND YOUR FAVORITE</p>
+                    <h2>What are you craving?</h2>
+                </div>
+
+                <label class="search-box">
+                    <span>⌕</span>
+                    <input
+                        type="search"
+                        id="food-search"
+                        placeholder="Search dishes..."
+                        aria-label="Search dishes">
+                    <kbd>⌘ K</kbd>
+                </label>
+            </div>
+
+            <!-- Food Categories -->
+            <div class="category-row" id="category-filters"
+                aria-label="Filter food by category">
+
+                <button class="category-chip active"
+                    data-category="All">
+                    🍽️ <span>All food</span>
+                </button>
+
+                <button class="category-chip" data-category="Burgers">
+                    🍔 <span>Burgers</span>
+                </button>
+
+                <button class="category-chip" data-category="Pizza">
+                    🍕 <span>Pizza</span>
+                </button>
+
+                <button class="category-chip" data-category="Asian">
+                    🍜 <span>Asian</span>
+                </button>
+
+                <button class="category-chip" data-category="Healthy">
+                    🥗 <span>Healthy</span>
+                </button>
+
+                <button class="category-chip" data-category="Desserts">
+                    🍰 <span>Desserts</span>
+                </button>
+
+            </div>
+
+            <!-- Food List -->
+            <div class="menu-title-row">
+                <h3>Popular right now <span>🔥</span></h3>
+                <p>Fresh picks just for you</p>
+            </div>
+
+            <!-- JavaScript adds food cards here -->
+            <div class="food-grid" id="food-grid"
+                aria-live="polite">
+            </div>
+
+            <p class="empty-state" id="empty-state" hidden>
+                No dishes found. Try another search or category.
+            </p>
+
+        </section>
+
+        <!-- Promotional Banner -->
+        <section class="promo container">
+
+            <div>
+                <p class="eyebrow">A LITTLE TREAT FOR YOU</p>
+                <h2>Your first bite is on us.</h2>
+
+                <p>
+                    Use code <strong>FIRSTBITE</strong>
+                    at checkout for a welcome discount.
+                </p>
+            </div>
+
+            <div class="promo-art">🍟 🥤</div>
+
+            <a href="#menu" class="promo-link">
+                Find your meal <span>→</span>
+            </a>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+
+            <a class="brand" href="#">
+                <span class="brand-mark">f</span>
+                foodie<span class="brand-dot">.</span>
+            </a>
+
+            <p>
+                Good food brings us together.
+                Made for your cravings. ©
+                <span id="year"></span> Foodie.
+            </p>
+
+            <a href="#menu">Back to menu ↑</a>
+
+        </div>
+    </footer>
+
+    <!-- Cart Background Overlay -->
+    <div class="cart-overlay" id="cart-overlay" hidden></div>
+
+    <!-- Shopping Cart -->
+    <aside class="cart-drawer"
+        id="cart-drawer"
+        aria-label="Shopping cart"
+        aria-hidden="true">
+
+        <div class="cart-header">
+            <div>
+                <p class="eyebrow">YOUR ORDER</p>
+                <h2>
+                    Your cart
+                    <span id="cart-heading-count">(0)</span>
+                </h2>
+            </div>
+
+            <button class="close-cart" id="cart-close"
+                aria-label="Close cart">×</button>
+        </div>
+
+        <!-- JavaScript adds cart items here -->
+        <div class="cart-items" id="cart-items"></div>
+
+        <!-- Empty Cart Message -->
+        <div class="cart-empty" id="cart-empty">
+            <span>🛍️</span>
+            <h3>Your cart is hungry</h3>
+            <p>Add something tasty from the menu.</p>
+
+            <button class="primary-button" id="browse-menu">
+                Explore menu
+            </button>
+        </div>
+
+        <!-- Cart Total -->
+        <div class="cart-footer" id="cart-footer" hidden>
+
+            <div class="subtotal-row">
+                <span>Subtotal</span>
+                <strong id="cart-subtotal">₹0</strong>
+            </div>
+
+            <p class="cart-note">
+                Delivery fees and taxes are calculated at checkout.
+            </p>
+
+            <button class="primary-button checkout-button"
+                id="checkout-button">
+                Continue to checkout <span>→</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- Notification Message -->
+    <div class="toast" id="toast"
+        role="status" aria-live="polite">
+    </div>
+
+</body>
+</html>
